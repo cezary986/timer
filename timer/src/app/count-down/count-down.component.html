@@ -1,3 +1,8 @@
-<p>count-down works!</p>
-
-<app-flip-card></app-flip-card>
+<div class="container-fluid">
+    <div class="clock-wrapper">
+        <mat-card [ngClass]="{'hidden': !clockInitialized}" class="clock-card">
+            <app-count-down-clock (initialize)="clockInitialized = true" [date]="eventDate">
+            </app-count-down-clock>
+        </mat-card>
+    </div>
+</div>

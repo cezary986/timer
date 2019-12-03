@@ -1,6 +1,13 @@
-$font-size: 30px;
-$flip-height-size: 30px;
-$flip-width-size: 20px;
+$font-size: 65px;
+$flip-height-size: 65px;
+$flip-width-size: 42px;
+// $font-size: 30px;
+// $flip-height-size: 30px;
+// $flip-width-size: 20px;
+
+:host {
+  display: inline-flex;
+}
 
 .flip-container {
   -webkit-perspective: 1000;

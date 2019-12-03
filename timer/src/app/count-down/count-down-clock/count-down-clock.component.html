@@ -1,0 +1,38 @@
+<div class="clock-wrapper" *ngIf="initialized">
+    <div class="row">
+        <div class="days">
+            <!-- DAYS -->
+            <app-flip-clock class="row" [value]="days"></app-flip-clock>
+            <div class="row">
+                <span class="label mat-body-strong">dni</span>
+            </div>
+        </div>
+
+        <span class="days-spacer"></span>
+        <div class="col">
+            <!-- HOURS -->
+            <app-flip-clock class="row" [value]="hours"></app-flip-clock>
+            <div class="row">
+                <span class="label mat-body-strong">godziny</span>
+            </div>
+        </div>
+
+        <span class="colon">:</span>
+        <div class="col">
+            <!-- MINUTES -->
+            <app-flip-clock class="row" [value]="minutes"></app-flip-clock>
+            <div class="row">
+                <span class="label mat-body-strong">minuty</span>
+            </div>
+        </div>
+
+        <span class="colon">:</span>
+        <div class="col">
+            <!-- SECONDS -->
+            <app-flip-clock class="row" [value]="seconds"></app-flip-clock>
+            <div class="row">
+                <span class="label mat-body-strong">sekundy</span>
+            </div>
+        </div>
+    </div>
+</div>

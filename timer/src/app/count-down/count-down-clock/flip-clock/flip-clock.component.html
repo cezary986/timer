@@ -1,0 +1,7 @@
+<ng-container *ngIf="number !== null">
+    <app-flip-card *ngIf="tensOfThousands > 0" [value]="tensOfThousands"></app-flip-card>
+    <app-flip-card *ngIf="thousands > 0" [value]="thousands"></app-flip-card>
+    <app-flip-card *ngIf="hundrets > 0" [value]="hundrets"></app-flip-card>
+    <app-flip-card [value]="tens"></app-flip-card>
+    <app-flip-card [value]="units"></app-flip-card>
+</ng-container>

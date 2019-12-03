@@ -3,15 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { CountDownRoutingModule } from './count-down-routing.module';
 import { CountDownComponent } from './count-down.component';
-import { FlipClockComponent } from './flip-clock/flip-clock.component';
-import { FlipCardComponent } from './flip-card/flip-card.component';
+import { CountDownClockModule } from './count-down-clock/count-down-clock.module';
 
+import { MatCardModule } from '@angular/material/card'; 
 
 @NgModule({
-  declarations: [CountDownComponent, FlipClockComponent, FlipCardComponent],
+  declarations: [CountDownComponent],
   imports: [
     CommonModule,
-    CountDownRoutingModule
+    CountDownRoutingModule,
+    CountDownClockModule,
+    MatCardModule
   ]
 })
 export class CountDownModule { }

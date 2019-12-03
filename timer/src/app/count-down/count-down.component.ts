@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountDownComponent implements OnInit {
 
-  constructor() { }
+  public eventDate: Date;
+  public clockInitialized = false;
+
+  constructor() {
+    this.eventDate = new Date(2021, 7, 28, 12, 0, 0);
+  }
 
   ngOnInit() {
   }
