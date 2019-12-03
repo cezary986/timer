@@ -1,0 +1,23 @@
+<div class="container-flip-card ">
+    <div class="first-layer first-layer-upper number">
+        <span>
+            {{ nextNumber }}
+        </span>
+    </div>
+    <div class="first-layer first-layer-lower number">
+        <span>
+            {{ prevNumber }}
+        </span>
+    </div>
+
+    <div class="flip-container">
+        <div class="flipper" [ngClass]="{'animated': animationTrigger}">
+            <div class="front">
+                <span class="number-span">{{ prevNumber }}</span>
+            </div>
+            <div class="back">
+                <span class="number-span">{{ nextNumber }}</span>
+            </div>
+        </div>
+    </div>
+</div>
