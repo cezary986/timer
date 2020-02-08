@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Dodawanie nowego wydarzenia</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <!-- TYTUŁ -->
+    <mat-form-field class="full-width">
+      <input formControlName="title" matInput placeholder="Tytuł" required> 
+      <mat-error *ngIf="form.controls.title.invalid">
+        <app-form-error [errors]="form.controls.title.errors"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+    <!-- DATA -->
+    <mat-form-field class="full-width">
+      <input [formControl]="form.controls.date"  matInput [matDatepicker]="picker2" placeholder="Data" disabled required>
+      <mat-error *ngIf="form.controls.date.invalid">
+        <app-form-error [errors]="form.controls.date.errors"></app-form-error>
+      </mat-error>
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <!-- CZAS -->
+    <mat-form-field class="full-width">
+      <input [ngxTimepicker]="picker" placeholder="Czas" required>
+      <ngx-material-timepicker #picker></ngx-material-timepicker>
+      <mat-error *ngIf="form.controls.time.invalid">
+        <app-form-error [errors]="form.controls.time.errors"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+</div>
+<div mat-dialog-actions class="flex">
+  <div class="spacer"></div>
+  <button mat-button (click)="onCancelClick()">Anuluj</button>
+  <button mat-button (click)="onSubmit()" cdkFocusInitial>Zapisz</button>
+</div>

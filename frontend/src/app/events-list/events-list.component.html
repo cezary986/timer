@@ -1,0 +1,40 @@
+<!-- <mat-form-field>
+    <mat-label>Wydarzenia</mat-label>
+    <mat-select>
+        <mat-option *ngFor="let event of events" [value]="event.id">
+            {{event.title}}
+        </mat-option>
+    </mat-select>
+
+</mat-form-field> -->
+
+<mat-expansion-panel #panel color="primary">
+    <mat-expansion-panel-header class="panel-header">
+        <ng-container *ngIf="(currentEvent | async); else noEventSelected">
+            <mat-panel-title>
+                {{ (currentEvent | async).title }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ (currentEvent | async).date | date }}
+            </mat-panel-description>
+        </ng-container>
+        <ng-template #noEventSelected>
+            <mat-panel-title>
+                Wybierz wydarzenie
+            </mat-panel-title>
+        </ng-template>    
+    </mat-expansion-panel-header>
+
+    <mat-list>
+        <mat-divider></mat-divider>
+        <mat-list-item 
+            class="event-list-item" 
+            (click)="onEventSelect(event); panel.close()" 
+            *ngFor="let event of (events | async); let i = index" 
+            matRipple>
+            <h4 mat-line>{{ event.title }}</h4>
+            <p mat-line>{{ event.date | date }} </p>
+            <mat-divider *ngIf="i !== (events | async).length - 1"></mat-divider>
+        </mat-list-item>
+    </mat-list>
+</mat-expansion-panel>

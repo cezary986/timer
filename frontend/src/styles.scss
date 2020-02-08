@@ -1,0 +1,94 @@
+/* You can add global styles to this file, and also import other style files */
+
+$default-padding: 16px;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@import "../node_modules/bootstrap-4-grid/scss/grid.scss";
+
+.hidden {
+  display: none !important;
+}
+
+.fab {
+  position: fixed !important;
+  z-index: 10;
+  right: 20px;
+  bottom: 20px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.list-loader {
+  display: block;
+  margin: 16px auto 16px auto;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.relative {
+  position: relative;
+}
+
+.inline-flex {
+  display: inline-flex !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.margin-left {
+  margin-left: $default-padding !important;
+}
+
+.margin-right {
+  margin-right: $default-padding !important;
+}
+
+.margin-top {
+  margin-top: $default-padding !important;
+}
+
+.margin-bottom {
+  margin-bottom: $default-padding !important;
+}
+
+.hidden {
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  opacity: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-expansion-panel-header {
+  .mat-content {
+    display: block;
+  }
+}

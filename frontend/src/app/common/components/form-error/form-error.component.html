@@ -1,0 +1,28 @@
+<ng-container *ngIf="mErrors !== null && mErrors !== undefined">
+    <span *ngFor="let error of (mErrors | toArray)">
+        <ng-container [ngSwitch]="error.key">
+            <!-- BŁĄD MIN -->
+            <ng-container *ngSwitchCase="'min'">
+                {{ ('forms_errors.' +  error.key) | translate }}
+                {{ error.payload.min }}
+            </ng-container>
+            <!-- BŁĄD MAX -->
+            <ng-container *ngSwitchCase="'max'">
+                {{ ('forms_errors.' +  error.key) | translate }}
+                {{ error.payload.max }}
+            </ng-container>
+            <!-- BŁĄD MIN LENGTH -->
+            <ng-container *ngSwitchCase="'minlength'">
+                    {{ ('forms_errors.' +  error.key) | translate : {lenght: error.payload.requiredLength} }}
+            </ng-container>
+            <!-- BŁĄD MAX LENGTH -->
+            <ng-container *ngSwitchCase="'maxlength'">
+                {{ ('forms_errors.' +  error.key) | translate : {lenght: error.payload.requiredLength} }}
+            </ng-container>
+            
+            <ng-container *ngSwitchDefault>
+                {{ ('forms_errors.' +  error.key) | translate }}
+            </ng-container>
+        </ng-container>
+    </span>
+</ng-container>

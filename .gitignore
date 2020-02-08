@@ -1,0 +1,8 @@
+env/
+build/
+dist/
+timer-win32-x64/
+node_modules/
+.vscode/
+db.json
+__pycache__/
