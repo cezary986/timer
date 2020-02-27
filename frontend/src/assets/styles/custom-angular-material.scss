@@ -1,0 +1,101 @@
+@import "~@angular/material/theming";
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin custom-angular-material($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+  .mat-button-base.rounded {
+    border-radius: 1000px !important;
+  }
+
+  .rounded {
+    border-radius: 1000px !important;
+  }
+
+  .notifier__notification {
+    background-color: white;
+  }
+
+  .notifier__notification--error {
+    color: white;
+    background-color: mat-color($warn);
+    .notifier__notification-button-icon {
+      fill: rgba(
+        $color: (
+          white
+        ),
+        $alpha: 0.85
+      ) !important;
+    }
+  }
+
+  .notifier__notification--success {
+    background-color: mat-color($primary);
+    color: white !important;
+    .notifier__notification-button-icon {
+      fill: rgba(
+        $color: (
+          white
+        ),
+        $alpha: 0.85
+      ) !important;
+    }
+  }
+
+  .notifier__notification--info {
+    background-color: white;
+  }
+
+  .color-primary {
+    color: mat-color($primary);
+  }
+
+  .color-accent {
+    color: mat-color($accent);
+  }
+
+  .color-warn {
+    color: mat-color($warn);
+  }
+
+  .bg-warn {
+    background-color: mat-color($warn) !important;
+  }
+
+  .bg-primary {
+    background-color: mat-color($primary) !important;
+  }
+
+  mat-form-field.full-width {
+    width: 100% !important;
+  }
+
+  .clickable {
+    transition: all 0.2s;
+    cursor: pointer;
+    &:hover {
+      background-color: lighten(mat-color($primary), 32%) !important;
+    }
+  }
+
+  .active {
+    background-color: lighten(mat-color($primary), 35%) !important;
+  }
+
+  .event-active {
+    background-color: lighten(mat-color($primary), 25%) !important;
+  }
+
+  .mat-tab-label-active {
+    color: mat-color($primary);
+  }
+
+  .theme-active {
+    stroke: mat-color($primary);
+    stroke-width: 3px;
+  }
+}

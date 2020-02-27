@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Event } from '../models/event';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ThemesService } from './themes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class DataStoreService {
   private events: BehaviorSubject<Event[]> = new BehaviorSubject(null);
   private currentEvent: BehaviorSubject<Event> = new BehaviorSubject(null);
 
-  constructor() { }
+  constructor(
+    private themeService: ThemesService
+  ) { }
 
   public getEvents(): Observable<Event[]> {
     return this.events;
@@ -50,7 +53,14 @@ export class DataStoreService {
     return this.currentEvent;
   }
 
-  public setCurrentEvent(eventId: number) {
-    this.currentEvent.next(this.events.value.find(el => el.id === eventId));
+  public setCurrentEventId(eventId: number) {
+    const event = this.events.value.find(el => el.id === eventId);
+    this.currentEvent.next(event);
+    this.themeService.applyTheme(event.theme);
+  }
+
+  public setCurrentEvent(event: Event) {
+    this.currentEvent.next(event);
+    this.themeService.applyTheme(event.theme);
   }
 }

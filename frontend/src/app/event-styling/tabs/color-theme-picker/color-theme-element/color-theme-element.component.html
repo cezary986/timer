@@ -1,0 +1,7 @@
+
+
+<mat-icon *ngIf="active" class="color-primary active-icon">check_circle</mat-icon>
+<svg class="theme-colors" style="overflow: visible;" rotate="90" width="50" height="100">
+  <circle (click)="themeSelected.emit(theme)" cx="25" cy="50" r="25" [ngClass]="{'theme-active': active}" [ngStyle]="{'fill': theme.colorPrimary }" />
+  <path (click)="themeSelected.emit(theme)" d="M0,50 a1,1 0 0,0 50,0" [ngClass]="{'theme-active': active}" [ngStyle]="{'fill': theme.colorSecondary }" />
+</svg>

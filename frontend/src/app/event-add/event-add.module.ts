@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EventAddRoutingModule } from './event-add-routing.module';
 import { EventAddComponent } from './event-add.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,7 +13,9 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [EventAddComponent],
+  declarations: [
+    EventAddComponent
+  ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -26,7 +27,6 @@ import { TranslateModule } from '@ngx-translate/core';
     MatDatepickerModule,
     MatButtonModule,
     FormErrorModule,
-    EventAddRoutingModule
   ],
   exports: [
     EventAddComponent

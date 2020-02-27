@@ -55,7 +55,8 @@ export class EventAddComponent implements OnInit {
     const event: Event = {
       id: (this.data !== null) ? this.data.id : null,
       title: this.form.value.title,
-      date: eventDate.getTime()
+      date: eventDate.getTime(),
+      theme: null
     };
     if (this.mode === 'add') {
       this.eventService.saveEvent(event).subscribe((res) => {

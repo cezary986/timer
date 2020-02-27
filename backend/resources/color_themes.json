@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Lawenda i róże",
+    "colorPrimary": "#523249",
+    "colorSecondary": "#815355"
+  },
+  {
+    "name": "Różany",
+    "colorPrimary": "#720026",
+    "colorSecondary": "#CE8E98"
+  },
+  {
+    "name": "Jesienne barwy",
+    "colorPrimary": "#895737",
+    "colorSecondary": "#C08552"
+  },
+  {
+    "name": "Jesienne barwy 2",
+    "colorPrimary": "#C08552",
+    "colorSecondary": "#BAAB68"
+  },
+  {
+    "name": "Pastelowe kolory",
+    "colorPrimary": "#FCD0A1",
+    "colorSecondary": "#B1B695"
+  },
+  {
+    "name": "Cielisty",
+    "colorPrimary": "#AB947E",
+    "colorSecondary": "#C3A995"
+  }
+]

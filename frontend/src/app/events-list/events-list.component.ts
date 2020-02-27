@@ -5,6 +5,7 @@ import { DataStoreService } from '../common/service/data-store.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { EventAddComponent } from '../event-add/event-add.component';
+import { StateService } from '../common/service/state.service';
 
 @Component({
   selector: 'app-events-list',
@@ -19,6 +20,7 @@ export class EventsListComponent implements OnInit {
   constructor(
     private eventService: EventsService,
     private dataStore: DataStoreService,
+    private stateService: StateService,
     public dialog: MatDialog
   ) {
     this.currentEvent = this.dataStore.getCurrentEvent();
@@ -33,7 +35,10 @@ export class EventsListComponent implements OnInit {
   }
 
   public onEventSelect(event: Event) {
-    this.dataStore.setCurrentEvent(event.id);
+    this.dataStore.setCurrentEventId(event.id);
+    const newState = this.stateService.state;
+    newState.event = event;
+    this.stateService.setState(newState).subscribe((res) => {});
   }
 
   public onEventDeleteClick(event: Event) {

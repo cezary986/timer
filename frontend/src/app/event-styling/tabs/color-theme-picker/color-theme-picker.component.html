@@ -1,0 +1,12 @@
+
+<div *ngIf="themes !== null" class="container">
+  <div class="row" style="max-width: 100%; margin: 0;">
+    <div *ngFor="let theme of themes" class="col-2 colors-wrapper">
+      <app-color-theme-element
+        (themeSelected)="onThemeSelect($event)"
+        [active]="(currentEvent | async).theme?.id === theme.id"
+        [theme]="theme">
+      </app-color-theme-element>
+    </div>
+  </div>
+</div>

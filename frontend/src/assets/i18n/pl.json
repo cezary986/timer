@@ -18,5 +18,10 @@
       "positive": "Zapisz",
       "negative": "Anuluj"
     }
+  },
+  "event_styling": {
+    "title": "Dostosuj strone wydarzenia",
+    "colors": "Kolorystyka",
+    "background": "Tło"
   }
 }

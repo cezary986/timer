@@ -9,7 +9,7 @@ import os
 
 print('Building Python app:')
 os.chdir('./backend')
-os.system('./build.bat')
+os.system('./build.py')
 
 print('Building Electron app:')
 os.chdir('../frontend')

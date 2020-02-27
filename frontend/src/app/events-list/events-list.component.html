@@ -19,7 +19,7 @@
     <mat-list>
         <mat-list-item 
             class="event-list-item"
-            [ngClass]="{'active': (currentEvent | async)?.id === event.id }" 
+            [ngClass]="{'event-active': (currentEvent | async)?.id === event.id }" 
             (click)="onEventSelect(event); panel.close()" 
             *ngFor="let event of (events | async); let i = index" 
             matRipple>

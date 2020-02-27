@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/styles/_notifier';
+@import './assets/styles/app-theme.scss';
 @import "../node_modules/angular-notifier/styles/core.scss";
 @import "../node_modules/angular-notifier/styles/themes/theme-material.scss";
 @include notifier();

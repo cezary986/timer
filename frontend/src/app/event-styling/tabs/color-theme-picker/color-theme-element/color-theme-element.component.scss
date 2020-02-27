@@ -1,0 +1,15 @@
+
+.theme-colors {
+  transform: rotate(90deg);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.active-icon {
+  z-index: 122223;
+  position: absolute;
+  right: 16px;
+  background-color: white;
+  top: 16px;
+  border-radius: 98%;
+}

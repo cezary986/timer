@@ -1,1 +1,32 @@
-<p>event-styling works!</p>
+<h1 mat-dialog-title>
+  {{ 'event_styling.title' | translate }}
+</h1>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">image</mat-icon>
+        {{ 'event_styling.background' | translate }}
+      </ng-template>
+      Content 1
+    </mat-tab>
+  
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">color_lens</mat-icon>
+        {{ 'event_styling.colors' | translate }}
+      </ng-template>
+      <app-color-theme-picker></app-color-theme-picker>
+    </mat-tab>
+  
+  </mat-tab-group>
+</div>
+<div mat-dialog-actions class="flex">
+  <div class="spacer"></div>
+  <button mat-button (click)="onDismiss()">
+    {{ 'event_add.actions.negative' | translate }}
+  </button>
+  <button mat-button (click)="onSubmit()">
+    {{ 'event_add.actions.positive' | translate }}
+  </button>
+</div>

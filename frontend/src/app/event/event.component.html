@@ -2,3 +2,12 @@
   *ngIf="eventDate !== null && eventDate !== undefined"
   [eventDate]="eventDate">
 </app-count-down>
+
+<button 
+  *ngIf="eventDate !== null && eventDate !== undefined"
+  class="styling-button" 
+  mat-icon-button 
+  (click)="onEventStylingButtonClick()"
+  title="{{ 'event_styling.title' | translate }}">
+  <mat-icon>brush</mat-icon>
+</button>
