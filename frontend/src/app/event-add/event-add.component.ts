@@ -29,23 +29,46 @@ export class EventAddComponent implements OnInit {
   }
 
   private createForm() {
+    let eventTime = null;
+    if (this.data !== null) {
+      const eventDate = new Date(this.data.date);
+      eventTime = eventDate.getHours() + ':' +  eventDate.getMinutes();
+    }
     this.form = this.formBuilder.group({
-      title: [null, [Validators.required]],
-      date: [new Date(), [Validators.required]],
-      time: [null, [Validators.required]],
+      title: [this.data !== null ? this.data.title : null, [Validators.required]],
+      date: [this.data !== null ? new Date(this.data.date) : new Date(), [Validators.required]],
+      time: [this.data !== null ? eventTime : null, [Validators.required]],
     });
   }
 
   public onSubmit() {
+    const eventDate: Date = this.form.value.date;
+    if (this.form.value.time !== null) {
+      const tmp = this.form.value.time.split(':')
+      const hours = Number.parseInt(tmp[0], 10);
+      const minutes = Number.parseInt(tmp[1], 10);
+      eventDate.setHours(hours);
+      eventDate.setMinutes(minutes);
+      eventDate.setSeconds(0);
+    }
+
     const event: Event = {
-      id: null,
+      id: (this.data !== null) ? this.data.id : null,
       title: this.form.value.title,
-      date: this.form.value.date.getTime()
+      date: eventDate.getTime()
     };
-    this.eventService.saveEvent(event).subscribe((res) => {
-      this.dialogRef.close(res);
-      this.dataStore.addEvent(res);
-    });
+    if (this.mode === 'add') {
+      this.eventService.saveEvent(event).subscribe((res) => {
+        this.dialogRef.close(res);
+        this.dataStore.addEvent(res);
+      });
+    }
+    if (this.mode === 'edit') {
+      this.eventService.updateEvent(event).subscribe((res) => {
+        this.dialogRef.close(event);
+        this.dataStore.updateEvent(event);
+      });
+    }
   }
 
   public onCancelClick() {

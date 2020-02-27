@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { AppErrorHandler } from './common/errors/app-error-handler';
+import { NotifierModule } from 'angular-notifier';
 
 registerLocaleData(localePl);
 
@@ -49,10 +51,19 @@ export function translationFactory(http: HttpClient) {
         deps: [HttpClient]
       },
     }),
+    NotifierModule.withConfig({
+      theme: 'material',
+      position: {
+        horizontal: {
+          position: 'right'
+        }
+      }
+    })
   ],
   providers: [
-  { provide: LOCALE_ID, useValue: 'pl' },
-  { provide: MAT_DATE_LOCALE, useValue: 'pl' },
+    { provide: LOCALE_ID, useValue: 'pl' },
+    { provide: MAT_DATE_LOCALE, useValue: 'pl' },
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

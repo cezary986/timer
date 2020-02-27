@@ -1,9 +1,17 @@
-<h1 mat-dialog-title>Dodawanie nowego wydarzenia</h1>
+<h1 mat-dialog-title>
+  <ng-container *ngIf="mode === 'add'">
+    {{ 'event_add.title_add' | translate }}
+  </ng-container>
+  <ng-container *ngIf="mode === 'edit'">
+    {{ 'event_add.title_edit' | translate }}
+    {{ data.title }}
+  </ng-container>
+</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <!-- TYTUŁ -->
     <mat-form-field class="full-width">
-      <input formControlName="title" matInput placeholder="Tytuł" required> 
+      <input cdkFocusInitial formControlName="title" matInput placeholder="Tytuł" required> 
       <mat-error *ngIf="form.controls.title.invalid">
         <app-form-error [errors]="form.controls.title.errors"></app-form-error>
       </mat-error>
@@ -19,8 +27,8 @@
     </mat-form-field>
     <!-- CZAS -->
     <mat-form-field class="full-width">
-      <input [ngxTimepicker]="picker" placeholder="Czas" required>
-      <ngx-material-timepicker #picker></ngx-material-timepicker>
+      <input formControlName="time" [ngxTimepicker]="picker" placeholder="Czas" [format]="24" required matInput>
+      <ngx-material-timepicker  #picker></ngx-material-timepicker>
       <mat-error *ngIf="form.controls.time.invalid">
         <app-form-error [errors]="form.controls.time.errors"></app-form-error>
       </mat-error>
@@ -30,6 +38,10 @@
 </div>
 <div mat-dialog-actions class="flex">
   <div class="spacer"></div>
-  <button mat-button (click)="onCancelClick()">Anuluj</button>
-  <button mat-button (click)="onSubmit()" cdkFocusInitial>Zapisz</button>
+  <button mat-button (click)="onCancelClick()">
+    {{ 'event_add.actions.negative' | translate }}
+  </button>
+  <button mat-button (click)="onSubmit()">
+    {{ 'event_add.actions.positive' | translate }}
+  </button>
 </div>

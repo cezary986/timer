@@ -1,3 +1,22 @@
 {
-  "app_title": "Timer"
+  "app_title": "Timer",
+  "toasts": {
+    "errors": {
+      "app_error": "Coś poszło nie tak..."
+    }
+  },
+  "events_list": {
+    "actions": {
+      "edit": "Edytuj",
+      "remove": "Usuń"
+    }
+  },
+  "event_add": {
+    "title_add": "Dodawanie nowego wydarzenia",
+    "title_edit": "Edycja wydarzenia: ",
+    "actions": {
+      "positive": "Zapisz",
+      "negative": "Anuluj"
+    }
+  }
 }

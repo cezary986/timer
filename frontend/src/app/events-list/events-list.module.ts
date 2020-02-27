@@ -8,6 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRippleModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule, MatIconModule, MatDialogModule } from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
+import { EventAddModule } from '../event-add/event-add.module';
 
 @NgModule({
   declarations: [
@@ -15,13 +19,19 @@ import { MatRippleModule } from '@angular/material/core';
   ],
   imports: [
     CommonModule,
+    TranslateModule,
     MatListModule,
+    EventAddModule,
+    MatDialogModule,
     MatDividerModule,
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,
-    MatRippleModule
+    MatRippleModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [
     EventsListComponent

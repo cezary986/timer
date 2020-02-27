@@ -27,7 +27,11 @@ export class EventsService {
     return this.igorService.dispatch<Event>(this.actions.ADD_EVENT, event);
   }
 
-  public removeEvent(event: Event): Observable<void> {
-    return this.igorService.dispatch<void>(this.actions.REMOVE_EVENT);
+  public updateEvent(event: Event): Observable<void> {
+    return this.igorService.dispatch<void>(this.actions.UPDATE_EVENT, event);
+  }
+
+  public removeEvent(eventId: number): Observable<void> {
+    return this.igorService.dispatch<void>(this.actions.REMOVE_EVENT, eventId);
   }
 }

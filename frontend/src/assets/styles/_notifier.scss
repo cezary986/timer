@@ -1,0 +1,37 @@
+@mixin notifier() {
+
+
+  .notifier__notification {
+    background-color: white;
+  }
+
+  .notifier__notification--error {
+    color: white;
+    background-color: rgb(156, 58, 58);
+    .notifier__notification-button-icon {
+      fill: rgba(
+        $color: (
+          white
+        ),
+        $alpha: 0.85
+      ) !important;
+    }
+  }
+
+  .notifier__notification--success {
+    background-color: white;
+    color: white !important;
+    .notifier__notification-button-icon {
+      fill: rgba(
+        $color: (
+          white
+        ),
+        $alpha: 0.85
+      ) !important;
+    }
+  }
+
+  .notifier__notification--info {
+    background-color: white;
+  }
+}

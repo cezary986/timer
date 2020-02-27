@@ -10,9 +10,7 @@ import { EventAddComponent } from './event-add/event-add.component';
 export class AppComponent {
   title = 'timer';
 
-  constructor(public dialog: MatDialog) {
-    
-  }
+  constructor(public dialog: MatDialog) {}
 
   public onAddNewEventClick() {
     const dialogRef = this.dialog.open(EventAddComponent, {

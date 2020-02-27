@@ -11,11 +11,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormErrorModule } from '../common/components/form-error/form-error.module';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [EventAddComponent],
   imports: [
     CommonModule,
+    TranslateModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
     MatFormFieldModule,

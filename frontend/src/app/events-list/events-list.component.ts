@@ -3,6 +3,8 @@ import { Event } from '../common/models/event';
 import { EventsService } from '../common/service/events.service';
 import { DataStoreService } from '../common/service/data-store.service';
 import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { EventAddComponent } from '../event-add/event-add.component';
 
 @Component({
   selector: 'app-events-list',
@@ -16,7 +18,9 @@ export class EventsListComponent implements OnInit {
 
   constructor(
     private eventService: EventsService,
-    private dataStore: DataStoreService) {
+    private dataStore: DataStoreService,
+    public dialog: MatDialog
+  ) {
     this.currentEvent = this.dataStore.getCurrentEvent();
     this.events = this.dataStore.getEvents();
   }
@@ -32,4 +36,15 @@ export class EventsListComponent implements OnInit {
     this.dataStore.setCurrentEvent(event.id);
   }
 
+  public onEventDeleteClick(event: Event) {
+    this.eventService.removeEvent(event.id).subscribe((res) => {
+      this.dataStore.removeEvent(event.id);
+    });
+  }
+
+  public onEventEditClick(event: Event) {
+    const dialogRef = this.dialog.open(EventAddComponent, {
+      data: event
+    });
+  }
 }

@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/styles/_notifier';
+@import "../node_modules/angular-notifier/styles/core.scss";
+@import "../node_modules/angular-notifier/styles/themes/theme-material.scss";
+@include notifier();
 
 $default-padding: 16px;
 
@@ -91,4 +95,20 @@ mat-expansion-panel-header {
   .mat-content {
     display: block;
   }
+}
+
+.mat-button-base.rounded {
+  border-radius: 1000px !important;
+}
+
+.rounded {
+  border-radius: 1000px !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 100000 !important;
+}
+
+.timepicker-overlay {
+  z-index: 100001 !important;
 }
