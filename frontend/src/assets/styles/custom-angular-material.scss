@@ -98,4 +98,8 @@
     stroke: mat-color($primary);
     stroke-width: 3px;
   }
+
+  mat-expansion-panel {
+    border-radius: 0 !important;
+  }
 }

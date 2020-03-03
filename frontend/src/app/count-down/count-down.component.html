@@ -1,5 +1,6 @@
 <div class="container-fluid">
     <div class="clock-wrapper">
+        <app-loader *ngIf="!clockInitialized"></app-loader>
         <mat-card [ngClass]="{'hidden': !clockInitialized}" class="clock-card">
             <app-count-down-clock (initialize)="clockInitialized = true" [date]="eventDate">
             </app-count-down-clock>

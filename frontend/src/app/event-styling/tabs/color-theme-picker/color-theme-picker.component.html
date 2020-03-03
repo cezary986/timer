@@ -5,7 +5,8 @@
       <app-color-theme-element
         (themeSelected)="onThemeSelect($event)"
         [active]="(currentEvent | async).theme?.id === theme.id"
-        [theme]="theme">
+        [theme]="theme"
+        title="{{ theme.name }}">
       </app-color-theme-element>
     </div>
   </div>

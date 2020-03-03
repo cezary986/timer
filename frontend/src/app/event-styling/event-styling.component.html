@@ -2,13 +2,13 @@
   {{ 'event_styling.title' | translate }}
 </h1>
 <div mat-dialog-content>
-  <mat-tab-group>
+  <mat-tab-group  mat-align-tabs="center">
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">image</mat-icon>
         {{ 'event_styling.background' | translate }}
       </ng-template>
-      Content 1
+      <app-event-background></app-event-background>
     </mat-tab>
   
     <mat-tab>
@@ -23,10 +23,7 @@
 </div>
 <div mat-dialog-actions class="flex">
   <div class="spacer"></div>
-  <button mat-button (click)="onDismiss()">
-    {{ 'event_add.actions.negative' | translate }}
-  </button>
   <button mat-button (click)="onSubmit()">
-    {{ 'event_add.actions.positive' | translate }}
+    {{ 'event_styling.actions.ok' | translate }}
   </button>
 </div>

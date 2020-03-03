@@ -8,6 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ColorThemePickerModule } from './tabs/color-theme-picker/color-theme-picker.module';
+import { EventBackgroundModule } from './tabs/event-background/event-background.module';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,13 @@ import { ColorThemePickerModule } from './tabs/color-theme-picker/color-theme-pi
     CommonModule,
     TranslateModule,
     ColorThemePickerModule,
+    EventBackgroundModule,
     MatFormFieldModule,
     MatTabsModule,
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     EventStylingComponent

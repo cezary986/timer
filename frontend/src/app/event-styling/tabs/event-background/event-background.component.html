@@ -1,0 +1,31 @@
+
+
+<div class="container">
+  <!-- PREVIEW BACKGROUND IMAGE -->
+  <ng-container *ngIf="(backgroundImageUrl | async) !== null && !isEditing">
+    <img class="bg-image" src="{{ backgroundImageUrl | async }}" alt="Background image">
+    <div class="row button-row">
+      <div class="col-6">
+        <button (click)="isEditing = true" class="edit-bg-button" mat-raised-button color="primary">
+          {{ 'event_styling.actions.change_background' | translate }}
+        </button>
+      </div>
+      <div class="col-6">
+        <button (click)="onDeleteBackgroundClick()" class="edit-bg-button" mat-raised-button>
+          {{ 'event_styling.actions.delete_background' | translate }}
+        </button>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <!-- EDIT BACKGROUND IMAGE -->
+  <ng-container *ngIf="isEditing || (backgroundImageUrl | async) === null">
+    <app-file-upload
+      [accepts]="'image/*'"
+      [multiple]="false"
+      (files)="onFileSelect($event)">
+    </app-file-upload>
+  </ng-container>
+
+</div>

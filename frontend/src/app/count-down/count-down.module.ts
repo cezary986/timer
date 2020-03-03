@@ -5,6 +5,7 @@ import { CountDownComponent } from './count-down.component';
 import { CountDownClockModule } from './count-down-clock/count-down-clock.module';
 
 import { MatCardModule } from '@angular/material/card';
+import { LoaderModule } from '../common/components/loader/loader.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     CommonModule,
     CountDownClockModule,
-    MatCardModule
+    MatCardModule,
+    LoaderModule
   ],
   exports: [
     CountDownComponent

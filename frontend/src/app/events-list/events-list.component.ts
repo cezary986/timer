@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event } from '../common/models/event';
 import { EventsService } from '../common/service/events.service';
 import { DataStoreService } from '../common/service/data-store.service';
@@ -37,13 +37,16 @@ export class EventsListComponent implements OnInit {
   public onEventSelect(event: Event) {
     this.dataStore.setCurrentEventId(event.id);
     const newState = this.stateService.state;
-    newState.event = event;
+    newState.eventId = event.id;
     this.stateService.setState(newState).subscribe((res) => {});
   }
 
   public onEventDeleteClick(event: Event) {
     this.eventService.removeEvent(event.id).subscribe((res) => {
       this.dataStore.removeEvent(event.id);
+      const newState = this.stateService.state;
+      newState.eventId = null;
+      this.stateService.setState(newState).subscribe((res) => {});
     });
   }
 

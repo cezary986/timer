@@ -1,11 +1,16 @@
 {
   "app_title": "Timer",
+  "no_events": {
+    "title": "Nie masz jeszcze żadnych wydarzeń",
+    "subtitle": "Kliknij plus aby dodać nowe wydarzenie!"
+  },
   "toasts": {
     "errors": {
       "app_error": "Coś poszło nie tak..."
     }
   },
   "events_list": {
+    "no_events": "Nie masz żadnych wydarzeń",
     "actions": {
       "edit": "Edytuj",
       "remove": "Usuń"
@@ -22,6 +27,15 @@
   "event_styling": {
     "title": "Dostosuj strone wydarzenia",
     "colors": "Kolorystyka",
-    "background": "Tło"
+    "background": "Tło",
+    "actions": {
+      "ok": "OK",
+      "change_background": "Zmień tło",
+      "delete_background": "Usuń tło"
+    }
+  },
+  "file_upload": {
+    "drag_and_drop_here": "Przeciągnij i upuść plik lub",
+    "choose_from_disk": "Wybierz plik z dysku"
   }
 }

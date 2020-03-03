@@ -10,12 +10,12 @@ import { map } from 'rxjs/operators';
 export class StateService {
 
   public state: AppState = {
-    event: null
+    eventId: null
   };
 
   private actions = {
-    GET_STATE: 'get_state',
-    SET_STATE: 'set_state',
+    GET_STATE: 'state.get',
+    SET_STATE: 'state.set',
   };
 
   constructor(

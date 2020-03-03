@@ -1,6 +1,3 @@
-from endpoints.events import get_events, add_event, delete_event, update_event, set_event_background_image
-from endpoints.themes import get_color_themes
-from endpoints.state import get_state, set_state
 import os
 from igor.server import IgorServer
 import os 
@@ -10,29 +7,39 @@ import time
 import subprocess
 from argparse import ArgumentParser
 from tinydb import TinyDB
+import _thread
 
+from endpoints.events import EVENTS_API
+from endpoints.themes import THEMES_API
+from endpoints.state import STATE_API
+
+from igor.core import flatten
 from igor.server import CONFIG
 
+def shutdown(out, data, **kwargs):
+    _thread.interrupt_main()
+
+
+CONFIG['file_server_config'] = {
+        'enable': True,
+        'port': 8080,
+        'root_directory': os.path.dirname(__file__)
+    }
 
 ACTIONS = {
-    'get_events': get_events,
-    'add_event': add_event,
-    'delete_event': delete_event,
-    'update_event': update_event,
-    'get_color_themes': set_event_background_image,
-
-    'get_color_themes': get_color_themes,
-
-    'get_state': get_state,
-    'set_state': set_state,
+    'events': EVENTS_API,
+    'color_themes': THEMES_API,
+    'state': STATE_API,
+    'shutdown': shutdown
 }
+
 
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--dev', action='store_true', dest='dev_version')
     args = parser.parse_args()
 
-    igor = IgorServer(api=ACTIONS)
+    igor = IgorServer(api=flatten(ACTIONS), config=CONFIG)
     
     db = None
 
@@ -42,7 +49,7 @@ if __name__ == '__main__':
     else:
         # Run prod versoin with electron
         frontend_process = subprocess.Popen(['timer.exe'])
-        igor.bind_with_frontend_process(frontend_process)
+        igor.bind_with_ui_process(frontend_process)
         igor.scope['db'] = TinyDB('./resources/db.json')
 
     igor.run_forever()

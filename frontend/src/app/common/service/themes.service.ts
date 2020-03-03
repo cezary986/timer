@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IgorService } from 'src/app/igor/igor.service';
 import { Observable } from 'rxjs';
 import { ColorTheme } from '../models/color-theme';
+import { environment } from 'src/environments/environment';
 
 function hexToRgb(hexString) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexString);
@@ -49,7 +50,7 @@ export class ThemesService {
   private styleElement = null;
 
   private actions = {
-    GET_THEMES: 'get_color_themes',
+    GET_THEMES: 'color_themes.get',
   };
 
   constructor(
@@ -60,23 +61,36 @@ export class ThemesService {
     return this.igorService.dispatch<ColorTheme[]>(this.actions.GET_THEMES);
   }
 
-  public applyTheme(theme: ColorTheme) {
+  public applyTheme(theme: ColorTheme, backgroundImage?: string) {
+    if (theme === null || theme === undefined) {
+      return;
+    }
     this.styleElement = this.styleElement === null ? document.getElementById(this.styleElementId) : this.styleElement;
     if (this.styleElement === null) {
       this.addStyleElement();
     }
-    const textColorPrimary = selectTextColor(theme.colorPrimary);
+    const textColorPrimary = theme.textColor !== null ? theme.textColor : selectTextColor(theme.colorPrimary);
     const textColorSecondary = selectTextColor(theme.colorSecondary);
+    const textColorBackground = selectTextColor(theme.colorBackground);
     let css =
-      ' body { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }' +
+      ' body { background-color: ' + theme.colorBackground + '; color: ' + textColorBackground + ' !important; }' +
       ' .mat-expansion-panel-body { background-color: white; }' +
-      ' .mat-expansion-panel-header-title { color: ' + textColorSecondary + ' !important; }' +
-      ' .mat-expansion-panel-header-description { color: ' + textColorSecondary + ' !important; }' +
-      ' .mat-card { background-color: ' + theme.colorSecondary + '; color: ' + textColorSecondary + ' !important; }' +
-      ' .number-span { background-color: ' + theme.colorSecondary + ' !important; color: ' + textColorSecondary + ' !important; }' +
+      ' .mat-expansion-panel-header-title { color: ' + textColorPrimary + ' !important; }' +
+      ' .mat-expansion-indicator::after { color: ' + textColorPrimary + ' !important; }' +
+      ' .mat-expansion-panel-header-description { color: ' + textColorPrimary + ' !important; }' +
+      ' .mat-card { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }' +
+      ' .number-span { background-color: ' + theme.colorPrimary + ' !important; color: ' + textColorPrimary + ' !important; }' +
       ' .fab { background-color: ' + theme.colorSecondary + ' !important; color: ' + textColorSecondary + ' !important; }' +
-      ' .mat-expansion-panel { background-color: ' + theme.colorSecondary + '; color: ' + textColorSecondary + ' !important; }';
-    this.styleElement.innerText = css;
+      ' .mat-expansion-panel { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }';
+    if (backgroundImage !== null && backgroundImage !== undefined) {
+      css += ' body { background-image: url("' + environment.fileServerAddress + '/' + backgroundImage + '"); }';
+      this.styleElement.innerText = this.styleElement.innerText + ' body { background-image: none !important; }';
+      setTimeout(() => {
+        this.styleElement.innerText = css;
+      }, 10);
+    } else {
+      this.styleElement.innerText = css;
+    }
   }
 
   private addStyleElement() {

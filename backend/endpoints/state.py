@@ -4,6 +4,7 @@ from tinydb import Query
 
 STATE_TABLE_NAME = 'state'
 
+
 def read_state_from_db(db):
     table = db.table(STATE_TABLE_NAME)
     elements = table.all()
@@ -26,3 +27,9 @@ def set_state(out, state, **kwargs):
     else:
         table.update(state, doc_ids=[state_from_db['id']])
     out.send()
+
+
+STATE_API = {
+    'get': get_state,
+    'set': set_state   
+}

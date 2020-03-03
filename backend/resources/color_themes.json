@@ -1,32 +1,72 @@
 [
-  {
-    "name": "Lawenda i róże",
-    "colorPrimary": "#523249",
-    "colorSecondary": "#815355"
-  },
-  {
-    "name": "Różany",
-    "colorPrimary": "#720026",
-    "colorSecondary": "#CE8E98"
-  },
-  {
-    "name": "Jesienne barwy",
-    "colorPrimary": "#895737",
-    "colorSecondary": "#C08552"
-  },
-  {
-    "name": "Jesienne barwy 2",
-    "colorPrimary": "#C08552",
-    "colorSecondary": "#BAAB68"
-  },
-  {
-    "name": "Pastelowe kolory",
-    "colorPrimary": "#FCD0A1",
-    "colorSecondary": "#B1B695"
-  },
-  {
-    "name": "Cielisty",
-    "colorPrimary": "#AB947E",
-    "colorSecondary": "#C3A995"
-  }
+   {
+      "name":"Magia Świąt",
+      "colorPrimary":"#122901",
+      "colorSecondary":"#A5131D",
+      "colorBackground":"#5E0F0B",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Niebiański",
+      "colorPrimary":"#B9C6D9",
+      "colorSecondary":"#CAD7E0",
+      "colorBackground":"#EAE6E3",
+      "textColor":"#000000"
+   },
+   {
+      "name":"Lodowy",
+      "colorPrimary":"#00a0ff",
+      "colorSecondary":"#4B7BF5",
+      "colorBackground":"#C2E2F5",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Rożany",
+      "colorPrimary":"#ffaca4",
+      "colorSecondary":"#aa626c",
+      "colorBackground":"#F9F1F0",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Pastelowe barwy",
+      "colorPrimary":"#EF7C8E",
+      "colorSecondary":"#EF7C8E",
+      "colorBackground":"#B6E2D3",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Pastelowe barwy 2",
+      "colorPrimary":"#8FDDE7",
+      "colorSecondary":"#8FDDE7",
+      "colorBackground":"#FFC2C7",
+      "textColor":"#000000"
+   },
+   {
+      "name":"Naturalny",
+      "colorPrimary":"#BCA88E",
+      "colorSecondary":"#9DA993",
+      "colorBackground":"#E3E8E9",
+      "textColor":"#000000"
+   },
+   {
+      "name":"Głebowa woda",
+      "colorPrimary":"#0081ca",
+      "colorSecondary":"#145DA0",
+      "colorBackground":"#0C2D48",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Lato",
+      "colorPrimary":"#ffb700",
+      "colorSecondary":"#9DE89C",
+      "colorBackground":"#65D4EE",
+      "textColor":"#FFFFFF"
+   },
+   {
+      "name":"Jesienne barwy",
+      "colorPrimary":"#D39F26",
+      "colorSecondary":"#B8A17A",
+      "colorBackground":"#856815",
+      "textColor":"#FFFFFF"
+   }
 ]

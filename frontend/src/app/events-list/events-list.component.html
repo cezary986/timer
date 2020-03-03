@@ -46,4 +46,8 @@
               </mat-menu>
         </mat-list-item>
     </mat-list>
+
+    <span *ngIf="(events | async)?.length === 0" class="no-events-message body-2">
+        {{ 'events_list.no_events' | translate }}
+    </span>
 </mat-expansion-panel>

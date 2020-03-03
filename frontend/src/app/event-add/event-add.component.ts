@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { EventsService } from '../common/service/events.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Event } from '../common/models/event';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { DataStoreService } from '../common/service/data-store.service';
@@ -44,30 +44,30 @@ export class EventAddComponent implements OnInit {
   public onSubmit() {
     const eventDate: Date = this.form.value.date;
     if (this.form.value.time !== null) {
-      const tmp = this.form.value.time.split(':')
+      const tmp = this.form.value.time.split(':');
       const hours = Number.parseInt(tmp[0], 10);
       const minutes = Number.parseInt(tmp[1], 10);
       eventDate.setHours(hours);
       eventDate.setMinutes(minutes);
       eventDate.setSeconds(0);
     }
-
-    const event: Event = {
+    let event = this.data !== null ? {...this.data} : {};
+    event = {
+      ...this.data,
       id: (this.data !== null) ? this.data.id : null,
       title: this.form.value.title,
       date: eventDate.getTime(),
-      theme: null
-    };
+    } as Event;
     if (this.mode === 'add') {
-      this.eventService.saveEvent(event).subscribe((res) => {
+      this.eventService.saveEvent(event as Event).subscribe((res) => {
         this.dialogRef.close(res);
         this.dataStore.addEvent(res);
       });
     }
     if (this.mode === 'edit') {
-      this.eventService.updateEvent(event).subscribe((res) => {
+      this.eventService.updateEvent(event as Event).subscribe((res) => {
         this.dialogRef.close(event);
-        this.dataStore.updateEvent(event);
+        this.dataStore.updateEvent(event as Event);
       });
     }
   }

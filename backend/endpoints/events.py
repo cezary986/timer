@@ -1,5 +1,7 @@
 import json
 import uuid
+import os
+import sys
 from tinydb import Query
 
 EVENTS_TABLE_NAME = 'events'
@@ -32,6 +34,29 @@ def update_event(out, event, **kwargs):
     table.update(event, doc_ids=[event['id']])
     out.send()
 
-def set_event_background_image(out, img_file_path, **kwargs):
-    # TODO
+def set_event_background_image(out, data, **kwargs):
+    event_id = data['eventId']
+    file_path = data['filePath']
+    db = kwargs['scope']['db']
+    table = db.table(EVENTS_TABLE_NAME)
+    event = table.get(doc_id=event_id)
+    current_path = os.path.dirname(__file__)
+    try:
+        if event['backgroundImage'] is not None:
+            os.remove(current_path.replace('\\', '/') + '/../' + event['backgroundImage'].replace('\\', '/'))
+    except Exception as error:
+        print(error)
+        out.send('Cannot delete file:' + event['backgroundImage'] + str(error))
+    
+    event['backgroundImage'] = file_path
+    table.update(event, doc_ids=[event_id])
     out.send()
+
+
+EVENTS_API = {
+    'get': get_events,
+    'add': add_event,
+    'update': update_event,
+    'delete': delete_event,
+    'set_background_image': set_event_background_image
+}

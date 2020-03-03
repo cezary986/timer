@@ -4,4 +4,6 @@ export interface ColorTheme {
   name: string;
   colorPrimary: string;
   colorSecondary: string;
+  colorBackground: string;
+  textColor: string;
 }

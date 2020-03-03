@@ -42,7 +42,6 @@ export class ColorThemePickerComponent implements OnInit {
         return this.eventService.updateEvent(event);
       }))
       .subscribe((res) => {
-        this.themesService.applyTheme(currentEvent.theme);
         this.dataStore.setCurrentEvent(currentEvent);
       });
   }
