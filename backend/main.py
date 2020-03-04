@@ -1,6 +1,7 @@
 import os
 from igor.server import IgorServer
 import os 
+import sys
 import json
 from threading import Thread
 import time
@@ -17,11 +18,12 @@ from igor.core import flatten
 from igor.server import CONFIG
 
 def shutdown(out, data, **kwargs):
-    _thread.interrupt_main()
+    print('Shutdown')
+    sys.exit()
 
 
 CONFIG['file_server_config'] = {
-        'enable': True,
+        'enable': False,
         'port': 8080,
         'root_directory': os.path.dirname(__file__)
     }
@@ -49,7 +51,6 @@ if __name__ == '__main__':
     else:
         # Run prod versoin with electron
         frontend_process = subprocess.Popen(['timer.exe'])
-        igor.bind_with_ui_process(frontend_process)
         igor.scope['db'] = TinyDB('./resources/db.json')
 
     igor.run_forever()

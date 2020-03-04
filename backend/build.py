@@ -4,14 +4,16 @@ from tinydb import TinyDB
 import os
 import subprocess
 from argparse import ArgumentParser
+from shutil import copy2, rmtree
 
 PATH_TO_THEMES_FILE = './resources/color_themes.json'
 DB_FILE = './dist/db.json'
+current_path =  os.getcwd() + '\\backend'
 
-
-if __name__ == '__main__':
+def build_python():
     parser = ArgumentParser()
     parser.add_argument('--dev', action='store_true', dest='dev_version')
+    parser.add_argument('--skip-angular', action='store_true', dest='skip_angular')
     args = parser.parse_args()
 
     install_command = 'pyinstaller ./main.py -F --clean'
@@ -28,3 +30,8 @@ if __name__ == '__main__':
       
       for theme in themes:
         table.insert(theme)
+
+
+    copy2(current_path + '\\dist\\main.exe', current_path + '\\..\\frontend\\timer-win32-x64')
+    copy2(current_path + '\\dist\\db.json', current_path + '\\..\\frontend\\timer-win32-x64\\resources')
+

@@ -5,28 +5,47 @@ Script building both part of the apliactions:
   - Angular app rendered by electron
 """
 
+import sys
 import os
 from shutil import copy2, rmtree
+from argparse import ArgumentParser
 import time
 
-current_path =  os.getcwd()
-print('Clean')
-rmtree(current_path + '\\frontend\\timer-win32-x64', ignore_errors=True)
+from frontend.build import build_frontend
+from backend.build import build_python
 
-print('Building Python app:')
-os.chdir('./backend')
-os.system('START ./env/Scripts/python.exe ./build.py')
+main_current_path =  os.getcwd()
 
-print('Building Electron app:')
-os.chdir('../frontend')
-os.system('npm run release-win32')
 
-# copy python exe to electron dist folder
+if __name__ == '__main__':
+    parser = ArgumentParser()
+    parser.add_argument('--dev', action='store_true', dest='dev_version')
+    parser.add_argument('--skip-angular', action='store_true', dest='skip_angular')
+    parser.add_argument('--skip-python', action='store_true', dest='skip_python')
+    args = parser.parse_args()
 
-copy2(current_path + '\\backend\\dist\\main.exe', current_path + '\\frontend\\timer-win32-x64')
-copy2(current_path + '\\backend\\dist\\db.json', current_path + '\\frontend\\timer-win32-x64\\resources')
+    print('Clean')
+    rmtree(main_current_path + '\\frontend\\timer-win32-x64', ignore_errors=True)
 
-time.sleep(4)
-rmtree(current_path + '\\dist', ignore_errors=True)
-os.mkdir(current_path + '\\dist')
-copy2(current_path + '\\frontend\\timer-win32-x64', current_path + '\\dist')
+    os.chdir('./frontend')
+    print(os.getcwd())
+    install_command = None
+    if args.skip_angular == True:
+      print('Skipping Angular app, Building Electron app')
+      install_command = 'npm run build-electron'
+    else:
+      print('Building Angular + Electron app')
+      install_command = 'npm run release-win32'
+    os.system(install_command)
+
+    os.chdir('../backend')
+    if args.skip_python != True:
+      print('Building Python app:')
+      build_python()
+    else:
+      print('Skipping python app')
+
+    os.chdir('../frontend')
+    build_frontend()
+    
+

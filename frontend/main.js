@@ -2,8 +2,8 @@ const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 const url = require("url");
 const path = require("path");
 const os = require('os');
-
 global.sharedObject = { prop1: process.argv }
+const WebSocket = require("ws")
 
 let mainWindow
 
@@ -35,7 +35,16 @@ app.on('ready', createWindow)
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
-    app.quit()
+    // shutdown igor process
+    const ws = new WebSocket('ws://127.0.0.1:5678');
+    ws.on('open', function open() {
+      ws.send(JSON.stringify({
+        streamId: 'igor_shutdown',
+        action: 'shutdown',
+        data: null
+      }));
+      app.quit()
+    });
   }
 })
 
