@@ -1,7 +1,8 @@
 # Timer countdown
 
-![Screen](https://raw.githubusercontent.com/cezary986/timer/master/docs/screen.png)
 Simple desktop app for counting down to events dates.
+
+![Screen](https://raw.githubusercontent.com/cezary986/timer/master/docs/screen.png)
 
 # Architecture
 
