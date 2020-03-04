@@ -42,8 +42,8 @@ def set_event_background_image(out, data, **kwargs):
     event = table.get(doc_id=event_id)
     current_path = os.path.dirname(__file__)
     try:
-        if event['backgroundImage'] is not None:
-            os.remove(current_path.replace('\\', '/') + '/../' + event['backgroundImage'].replace('\\', '/'))
+        if event.get('backgroundImage', None) is not None:
+            os.remove('./' + event['backgroundImage'].replace('\\', '/'))
     except Exception as error:
         print(error)
         out.send('Cannot delete file:' + event['backgroundImage'] + str(error))

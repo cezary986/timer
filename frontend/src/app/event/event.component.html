@@ -13,7 +13,7 @@
   <mat-icon>brush</mat-icon>
 </button>
 
-<div *ngIf="(events | async) === null || (events | async) === undefined || (events | async).length === 0" class="container">
+<div *ngIf="(events | async)?.length === 0" class="container">
   <div class="row align-center">
     <h2 style="width: 100%;">
       {{ 'no_events.title' | translate }}

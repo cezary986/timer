@@ -23,7 +23,7 @@ def shutdown(out, data, **kwargs):
 
 
 CONFIG['file_server_config'] = {
-        'enable': False,
+        'enable': True,
         'port': 8080,
         'root_directory': os.path.dirname(__file__)
     }

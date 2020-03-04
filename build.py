@@ -7,7 +7,8 @@ Script building both part of the apliactions:
 
 import sys
 import os
-from shutil import copy2, rmtree
+from shutil import copy2, rmtree, move, copytree
+from distutils.dir_util import copy_tree
 from argparse import ArgumentParser
 import time
 
@@ -19,7 +20,6 @@ main_current_path =  os.getcwd()
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('--dev', action='store_true', dest='dev_version')
     parser.add_argument('--skip-angular', action='store_true', dest='skip_angular')
     parser.add_argument('--skip-python', action='store_true', dest='skip_python')
     args = parser.parse_args()
@@ -47,5 +47,9 @@ if __name__ == '__main__':
 
     os.chdir('../frontend')
     build_frontend()
-    
 
+    print('Copy to dist folder...')
+    dist_folder_path = os.getcwd() + '\\..\\dist'
+    copy_tree(os.getcwd() + '\\timer-win32-x64', dist_folder_path)
+    
+    print('BUILD SUCCESSFUL')

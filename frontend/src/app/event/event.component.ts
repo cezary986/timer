@@ -1,9 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Event } from '../common/models/event';
 import { DataStoreService } from '../common/service/data-store.service';
 import { MatDialog } from '@angular/material';
 import { EventStylingComponent } from '../event-styling/event-styling.component';
-import { filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -22,10 +21,13 @@ export class EventComponent {
     public dialog: MatDialog
   ) {
     this.dataStore.getCurrentEvent()
-    .pipe(filter((event) => event !== null))
     .subscribe((res) => {
       this.event = res;
-      this.eventDate = new Date(this.event.date);
+      if (this.event !== null) {
+        this.eventDate = new Date(this.event.date);
+      } else {
+        this.eventDate = null;
+      }
     });
   }
   public onEventStylingButtonClick() {

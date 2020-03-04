@@ -62,26 +62,26 @@ export class ThemesService {
   }
 
   public applyTheme(theme: ColorTheme, backgroundImage?: string) {
-    if (theme === null || theme === undefined) {
-      return;
-    }
     this.styleElement = this.styleElement === null ? document.getElementById(this.styleElementId) : this.styleElement;
     if (this.styleElement === null) {
       this.addStyleElement();
     }
-    const textColorPrimary = theme.textColor !== null ? theme.textColor : selectTextColor(theme.colorPrimary);
-    const textColorSecondary = selectTextColor(theme.colorSecondary);
-    const textColorBackground = selectTextColor(theme.colorBackground);
-    let css =
-      ' body { background-color: ' + theme.colorBackground + '; color: ' + textColorBackground + ' !important; }' +
-      ' .mat-expansion-panel-body { background-color: white; }' +
-      ' .mat-expansion-panel-header-title { color: ' + textColorPrimary + ' !important; }' +
-      ' .mat-expansion-indicator::after { color: ' + textColorPrimary + ' !important; }' +
-      ' .mat-expansion-panel-header-description { color: ' + textColorPrimary + ' !important; }' +
-      ' .mat-card { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }' +
-      ' .number-span { background-color: ' + theme.colorPrimary + ' !important; color: ' + textColorPrimary + ' !important; }' +
-      ' .fab { background-color: ' + theme.colorSecondary + ' !important; color: ' + textColorSecondary + ' !important; }' +
-      ' .mat-expansion-panel { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }';
+    let css = '';
+    if (theme !== null && theme !== undefined) {
+      const textColorPrimary = theme.textColor !== null ? theme.textColor : selectTextColor(theme.colorPrimary);
+      const textColorSecondary = selectTextColor(theme.colorSecondary);
+      const textColorBackground = selectTextColor(theme.colorBackground);
+      css =
+        ' body { background-color: ' + theme.colorBackground + '; color: ' + textColorBackground + ' !important; }' +
+        ' .mat-expansion-panel-body { background-color: white; }' +
+        ' .mat-expansion-panel-header-title { color: ' + textColorPrimary + ' !important; }' +
+        ' .mat-expansion-indicator::after { color: ' + textColorPrimary + ' !important; }' +
+        ' .mat-expansion-panel-header-description { color: ' + textColorPrimary + ' !important; }' +
+        ' .mat-card { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }' +
+        ' .number-span { background-color: ' + theme.colorPrimary + ' !important; color: ' + textColorPrimary + ' !important; }' +
+        ' .fab { background-color: ' + theme.colorSecondary + ' !important; color: ' + textColorSecondary + ' !important; }' +
+        ' .mat-expansion-panel { background-color: ' + theme.colorPrimary + '; color: ' + textColorPrimary + ' !important; }';;
+    }
     if (backgroundImage !== null && backgroundImage !== undefined) {
       css += ' body { background-image: url("' + environment.fileServerAddress + '/' + backgroundImage + '"); }';
       this.styleElement.innerText = this.styleElement.innerText + ' body { background-image: none !important; }';

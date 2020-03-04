@@ -15,7 +15,7 @@ export class EventBackgroundComponent {
   public isEditing = false;
   public backgroundImageUrl = this.dataStore.getCurrentEvent()
     .pipe(map((event: Event) => {
-      if (event !== null && event.backgroundImage !== null) {
+      if (event !== null && event.backgroundImage !== null &&  event.backgroundImage !== undefined) {
         return `${environment.fileServerAddress}/${event.backgroundImage}`;
       } else {
         return null;

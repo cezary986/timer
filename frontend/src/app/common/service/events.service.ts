@@ -56,6 +56,7 @@ export class EventsService {
           { eventId: event.id, filePath: `resources/${fileName}` });
         event.backgroundImage = `${this.BACKGROUND_FILE_DIR}/${fileName}`;
         this.dataStore.setCurrentEvent(event);
+        this.themeService.applyTheme(event.theme, event.backgroundImage);
         return result;
       })));
   }

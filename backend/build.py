@@ -35,3 +35,6 @@ def build_python():
     copy2(current_path + '\\dist\\main.exe', current_path + '\\..\\frontend\\timer-win32-x64')
     copy2(current_path + '\\dist\\db.json', current_path + '\\..\\frontend\\timer-win32-x64\\resources')
 
+
+if __name__ == '__main__':
+  build_python()

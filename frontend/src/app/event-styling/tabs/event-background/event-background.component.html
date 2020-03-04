@@ -2,7 +2,7 @@
 
 <div class="container">
   <!-- PREVIEW BACKGROUND IMAGE -->
-  <ng-container *ngIf="(backgroundImageUrl | async) !== null && !isEditing">
+  <ng-container *ngIf="(backgroundImageUrl | async) !== null && (backgroundImageUrl | async) !== undefined && !isEditing">
     <img class="bg-image" src="{{ backgroundImageUrl | async }}" alt="Background image">
     <div class="row button-row">
       <div class="col-6">
